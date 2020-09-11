@@ -1,0 +1,22 @@
+<form [formGroup]="checkForm" (ngSubmit)="onSubmit()">
+    <div *ngFor="let data of formFieldData">
+        <div *ngIf="data.type=='text' || data.type=='checkbox'">
+            <label>{{data.label}}:</label>
+            <input formControlName="{{data.label}}" type="{{data.type}}" id="{{data.id}}" class="form-control" />
+        </div>
+        <div *ngIf="data.type=='select'">
+            <label>{{data.label}}:</label>
+            <select formControlName="{{data.label}}" id="choose" class="form-control">
+                <option *ngFor="let values of data.options; index as i ">
+                    {{data.options[i].value}}
+                </option> 
+        
+                </select>
+        </div>
+
+
+
+    </div>
+    <button type="submit">Check</button>
+
+</form>
